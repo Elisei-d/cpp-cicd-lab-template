@@ -28,6 +28,7 @@ jobs:
           echo "Rollback to ${{ github.event.inputs.version }} completed" >> rollback.log
 
       - name: Save rollback logs
+        if: always()
         run: docker logs app-blue > rollback_logs.txt 2>&1
 
       - name: Upload rollback logs
